@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/barius13/chinks.git"
+    "url": "git+https://github.com/0Farid/chinks-host.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/barius13/chinks"
+    "url": "https://github.com/0Farid/chinks-host"
   },
-  "homepage": "https://github.com/barius13/chinks/README.md",
+  "homepage": "https://github.com/0Farid/chinks-host/README.md",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
