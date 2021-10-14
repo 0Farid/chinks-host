@@ -1,0 +1,44 @@
+{
+  "name": "chinks.host",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barius13/chinks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barius13/chinks"
+  },
+  "homepage": "https://github.com/barius13/chinks/README.md",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "consolidate": "^0.16.0",
+    "cookie-parser": "^1.4.5",
+    "discord.js": "^13.1.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "filesize": "^8.0.3",
+    "formidable": "^1.2.2",
+    "get-some-cool-emojis": "^3.1.2",
+    "lokijs": "^1.5.12",
+    "mongoose": "^6.0.7",
+    "mv": "^2.1.1",
+    "nanoid": "^3.1.25",
+    "randomcolor": "^0.6.2",
+    "randomstring": "^1.2.1",
+    "serve-index": "^1.9.1",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "node": "^16.10.0"
+  },
+  "description": ""
+}

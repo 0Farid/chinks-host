@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>dashboard | devs.games</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+        <link rel="stylesheet" href="assets/dashboard.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css"> 
+        <link rel="stylesheet" href="https://use.typekit.net/obf6rgz.css">        
+    </head>
+    <body>
+      <div class="container">
+        <div class="drawer">
+          <a class="menulogo"><i class="fas fa-bars"></i></a>
+          <div class="menu">
+            <a data-menu="dashboard" href="#" class="active"><i class="fas fa-rocket"></i></i></a>
+            <a data-menu="uploads" href="/uploads"><i class="fas fa-images"></i></a>
+            <a data-menu="domains" href="#"><i class="fas fa-link"></i></a>
+            <a href="https://discord.gg/c5FwTBPSvr" target="_blank" ><i class="fab fa-discord"></i></a>
+            <a data-dialog="logout" href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+          </div>
+        </div>
+        <div class="content">
+          <div class="page active" data-page="dashboard">
+            <div class="header">
+              <div class="title">
+                <h2>Dashboard</h2>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="card thin">
+                <div class="head">
+                  <span class="title">
+                    Welcome, {{username}}
+                  </span>
+                </div>
+                <div class="body">
+                  <section id="counter-stats"
+                  <div class="row">
+                    <div class="stats">
+                      <i class="fas fa-file-image"></i>
+                      <div class="counting" data-count="900000">0</div>
+                      <p class="infolabel">Uploads</p>
+                    </div>
+
+                    <div class="stats">
+                      <i class="fas fa-upload"></i></i>
+                      <div class="counting" data-count="280">0MBs</div>
+                      <p class="infolabel">Total size</p>
+                    </div>
+
+                    <div class="stats">
+                      <i class="fa fa-user"></i>
+                      <div class="counting" data-count="75">0</div>
+                      <p class="infolabel">User ID</p>
+                    </div>
+                  </section>
+                  <div class="horizontalgap" style="margin-top: 6px;"></div>
+                  <div class="footer"></div>
+                  <section class="configsection">
+                    <div class="configinfo">
+                      <h2>Configuration</h2>
+                      <p id="upload-key"class="spoiler" >{{token}}</p>
+                      <div class="input-group mb-2">
+                        <input type="text" class="custom-input" style="color: #9b9b9b!important;" id="subdomain-input" placeholder="Subdomain" required>
+                        <select id="domain-select" class="custom-input" style="color: #9b9b9b!important;"></select>
+                    </div>
+
+                    <p class="checkbox-row">
+                      <input type="checkbox" id="embeds-checkbox" /><label for="embeds">Use embed &nbsp;</label>
+                      
+                      <input type="checkbox" id="invis-checkbox" /><label for="invis">Invisible URL (WIP)</label>
+                    </p>
+
+                    <a class="download-button" onclick="downloadConfig()" >Download Config</a>
+                    </div>
+                  </div>
+                </section>
+                <div class="horizontalgap" style="margin-top: 30px;"></div>
+                <div class="footer"></div>
+                <section class="accountsection">
+                  <div class="configinfo">
+                      <h2>Account</h2>
+                  </div>
+                  <div class="inviteinfo">
+                    <p id="invitecounter">You have [invite] invites.</p>
+                  </div>
+                  <div class="userbuttons">
+                    <button type="button" class="userbutton change-password">Change Password</button>
+                    <button type="button" class="userbutton delete-account">Delete Account</button>
+                  </div>
+                </section>
+              </div>
+              <div class="card long">
+                <div class="head">
+                  <span class="title">
+                    Embed settings
+                  </span>
+                </div>
+                  <div class="content">
+                    <div class="col-12">
+                      <div class="configcard">
+                          <div class="card-content">
+                    
+                            <div id="embedViewer-wrapper">
+                                <div class="card" id="embedViewer" style="width: 100%!important;">
+                                  <div class="card-header mb-0" id="embedViewer_header">
+                                      <input type="text" id="embedViewer_author" class="embedViewer-input mb-0" placeholder="Embed author..." value="">
+                                  </div>
+                                  <div class="card-body pt-0" id="embedViewer_body">
+                                      <input type="text" class="card-title embedViewer-input mb-0" id="embedViewer_title" placeholder="Embed title...">
+                                      <textarea class="embedViewer-input mb-0" id="embedViewer_description"></textarea>
+                                      <div style="text-align: left; margin-top: 16px;"><img class="img-fluid" id="embedViewer_image" src="https://upload.wikimedia.org/wikipedia/commons/d/d1/ShareX_Logo.png"></div>
+                                  </div>
+                                  <div class="card-footer" id="embedViewer_footer" style="text-align: left;">
+                                      <p class="m-0">Placeholders: {filename}, {filesize}, {username}, {uid}, {date}, {randomemoji}</p>
+                                  </div>
+                                </div>
+                                <div class="input-group mt-2">
+                                  <input type="text" class="form-control" id="embedColour-text" style="color: #9b9b9b!important;" readonly>
+                                  
+                                  <span class="input-group-text" id="embedColour-wrapper">
+                                  <input type="color" id="embedColour" value="#ff0000" style="opacity: 0%;">
+                                  </span>
+                                </div>
+                            </div>
+                            <!--<a onclick="downloadConfig()" class="button btn-block mt-2">Download Config</a>-->
+                          </div>
+                      </div>
+                    </div>
+                    <textarea id="config-result" placeholder="generated config here..." style="display: none; background-color: #171717; color: #9b9b9b; border: none; overflow-y: hidden; width: 100%; height: 100%; font-size: 80.7%; resize: none;" readonly></textarea>
+                    </div>
+                  </div>
+              <!--<div class="card-verticle">
+                <div class="card-small">
+                  <span class="title">
+                    Active Users
+                  </span>
+                  <h2 class="text">12</h2>
+                </div>
+                <div class="card-small">
+                  <span class="title">
+                    Overview
+                  </span>
+                </div>
+              </div>-->
+            </div>
+            <div class="stats">
+            </div>
+          </div>
+        </div>
+        <div class="sidebar"></div>
+
+        <p id="invite-url">{{inviteurl}}</p>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+      <script type="text/javascript">
+
+      var inviteUrl = document.getElementById('invite-url').innerText;
+      console.log(inviteUrl)
+      var invitecounter = document.getElementById('invitecounter')
+      var inviteinfo = document.getElementsByClassName("inviteinfo")[0]
+
+      $.get(inviteUrl, (data, status) => {
+          if(data.length == 0){
+            invitecounter.innerText = `You have 0 invites.`
+            linebreak = document.createElement("div");
+            linebreak.style.margin = "10px"
+            inviteinfo.appendChild(linebreak);   
+          } 
+          else{
+            if(data.length == 1){
+              invitecounter.innerText = `You have ${data.length} invite:`  
+            } 
+            else{
+              invitecounter.innerText = `You have ${data.length} invites:`
+            }
+            var list = document.createElement("pre");
+            list.setAttribute('class', 'invitelist')
+              
+            var listcontent = ""
+            n = 0;
+            data.slice().reverse().forEach(invitedata => {
+              invite = invitedata.invite
+              if(n % 3 == 0) listcontent += `${invite}, `
+              else listcontent += `${invite},\n`
+              n++
+            })
+            
+            listcontent = listcontent.slice(0, -2)
+            var node = document.createTextNode(listcontent);
+
+            list.appendChild(node);
+            inviteinfo.appendChild(list);
+          }
+      })
+
+
+      //CONFIG STUFF-------------------------------------------------------------------
+          var configJson = {};
+          var notification = document.getElementById("notification");
+          var notificationText = document.getElementById("notification-text");
+    
+          autosize(document.getElementById("embedViewer_description"));
+    
+          function sleep (time) {
+            return new Promise((resolve) => setTimeout(resolve, time));
+          }
+    
+          function showNotification(delay, text) {
+              alert(text)
+          }
+
+          function getDomains() {
+            var domainSelect = document.getElementById("domain-select")
+            $.get("https://devs.games/api/domains", (data, status) => {
+              data.forEach(item => {
+                var el = document.createElement("option")
+                el.value = item
+                el.innerText = item
+                domainSelect.appendChild(el)
+              })
+            })
+          }
+    
+          function generateConfig() {
+            var configResultTextarea = document.getElementById('config-result');
+            var uploadKey = document.getElementById('upload-key').innerText;
+            var embeds = document.getElementById('embeds-checkbox');
+            var embedAuthor = document.getElementById('embedViewer_author');
+            var embedTitle = document.getElementById('embedViewer_title');
+            var embedDescription = document.getElementById('embedViewer_description');
+            var embedColour = document.getElementById('embedColour-text');
+            var domain = document.getElementById("domain-select").value
+            var subdomain = document.getElementById("subdomain-input").value
+    
+            if (!embeds.checked) {
+              embedAuthor2 = "";
+              embedTitle2 = "";
+              embedDescription2 = "";
+              embedColour2 = "";
+            } else {
+              embedAuthor2 = embedAuthor.value;
+              embedTitle2 = embedTitle.value;
+              embedDescription2 = embedDescription.value;
+              embedColour2 = embedColour.value;                  
+            }
+    
+            config = {
+                        "Version": "13.4.0",
+                        "Name": "devs.games",
+                        "DestinationType": "ImageUploader, FileUploader",
+                        "RequestMethod": "POST",
+                        "RequestURL": "https://devs.games/upload",
+                        "Body": "MultipartFormData",
+                        "Arguments": {
+                          "upload-key": uploadKey,
+                          "embed-author": embedAuthor2,
+                          "embed-title": embedTitle2,
+                          "embed-description": embedDescription2,
+                          "embed-colour": embedColour2,
+                          "domain": domain,
+                          "subdomain": subdomain 
+                        },
+                        "FileFormName": "file"
+                      }
+    
+            configJson = JSON.stringify(config, null, 2);
+    
+            configResultTextarea.value = JSON.stringify(config, null, 2);
+    
+            setTimeout(generateConfig, 1);
+          }
+    
+          function downloadConfig() {
+            var uploadKey = document.getElementById('upload-key').innerText;
+            var filenameLength = document.getElementById('filename-length');
+    
+            if (uploadKey == "" || uploadKey == null) {
+              showNotification(1750, "Cant download your config because you didnt fill in your upload key.")
+              return;
+            }
+    
+            var filename = "devs.games config";
+            var text = configJson;
+            var element = document.createElement('a');
+    
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+    
+            element.style.display = 'none';
+            document.body.appendChild(element);
+    
+            element.click();
+    
+            document.body.removeChild(element);
+          }
+    
+          function updateEmbedColour() {
+            var colourPicker = document.getElementById("embedColour");
+            var colourValue = document.getElementById("embedColour-text");
+            var colourWrapper = document.getElementById("embedColour-wrapper");
+    
+            colourValue.value = colourPicker.value;
+            $('#embedViewer').css('border-left', "4px solid " + colourPicker.value);
+            $('#embedColour-wrapper').css('background', colourValue.value);
+    
+            setTimeout(updateEmbedColour, 1);
+          }
+    
+          /*function checkEmbedEnabled() {
+            var checkbox = document.getElementById('embeds-checkbox');
+            $("#embedViewer_description").show();
+    
+            if (checkbox.checked) {
+              $("#embedViewer-wrapper").show();
+            } else {
+              $("#embedViewer-wrapper").hide();
+            }
+    
+            setTimeout(checkEmbedEnabled, 1);
+          }
+    
+          checkEmbedEnabled();*/
+          updateEmbedColour();
+          generateConfig();
+          getDomains()
+        </script>
+    </body>
+</html>

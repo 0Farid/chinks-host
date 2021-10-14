@@ -1,1 +1,1 @@
-# chinks-host
+Enjoy skids :)

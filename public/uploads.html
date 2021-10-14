@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>uploads | devs.games</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="devs.games" property="og:title">
+        <meta content="*fork* of devs.games" property="og:description">
+            
+        <link rel="stylesheet" href="assets/uploads.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css"> 
+        <link rel="stylesheet" href="https://use.typekit.net/obf6rgz.css">        
+    </head>
+    <body>
+      <div class="container">
+        <div class="drawer">
+          <a class="menulogo"><i class="fas fa-bars"></i></a>
+          <div class="menu">
+            <a data-menu="dashboard" href="/dashboard"><i class="fas fa-rocket"></i></i></a>
+            <a data-menu="uploads" class="active" href="#"><i class="fas fa-images"></i></a>
+            <a data-menu="domains" href="#"><i class="fas fa-link"></i></a>
+            <a href="https://discord.gg/devs" target="_blank"><i class="fab fa-discord"></i></a>
+            <a data-dialog="logout" href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+          </div>
+        </div>
+        <div class="content">
+          <div class="page active" data-page="dashboard">
+            <div class="header">
+              <div class="title">
+                <h2>Uploads</h2>
+                <p id="counter">You have [uploadcount] uploads.</p>
+              </div>
+              <p id="upload-url">{{uploadurl}}</p>
+            </div>
+            <div class="grid">
+              <div class="gallery">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar">
+
+        </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+      <script type="text/javascript">
+        var gallery = document.getElementsByClassName("gallery")[0]
+        var uploadUrl = document.getElementById('upload-url').innerText;
+        var counter = document.getElementById('counter')
+
+        $.get(uploadUrl, (data, status) => {
+          if(data.length == 1){
+            counter.innerText = `You have ${data.length} upload.`
+          } 
+          else{
+            counter.innerText = `You have ${data.length} uploads.`
+          } 
+
+          if(data.length > 0) {
+            //puts newest image first
+            data.slice().reverse().forEach(img => {
+              var filename = img.filename
+              var date = new Date(img.date).toLocaleDateString()
+
+              imgpath = `https://devs.games/raw/${filename}`
+              console.log(imgpath)
+
+              imagecontainer = document.createElement('div');
+              imagecontainer.setAttribute("class", "imagecontainer");
+              gallery.appendChild(imagecontainer);
+
+              box = document.createElement('div');
+              box.setAttribute("class", "box");
+
+              imagecontainer.appendChild(box)
+
+              var imgelement = new Image();
+              imgelement.src = imgpath
+              imgelement.setAttribute('class', 'upload');
+              imgelement.onclick = function() {
+                  window.location.href = `https://devs.games/${filename.replace(/\.[^/.]+$/, "")}`;
+              };
+              box.appendChild(imgelement);
+
+              var info = document.createElement("p");
+              info.setAttribute('class', 'info')
+              var node = document.createTextNode(`${filename} | ${date}`);
+              info.appendChild(node);
+              imagecontainer.appendChild(info);
+            })
+          }          
+        })
+      </script>
+    </body>
+</html>

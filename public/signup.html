@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sign up | devs.games</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="devs.games" property="og:title">
+        <meta content="*Not* a racist Sharex image host" property="og:description">
+            
+        <link rel="stylesheet" href="assets/login.css">
+        <link rel="stylesheet" href="https://use.typekit.net/obf6rgz.css">        
+    </head>
+    <body align='center'>
+      <div class="card">
+        <h4>Sign up</h4>
+        <form action="/signup" method="POST">
+        <fieldset>
+          <div class="input-container">
+            <input type ="text" id = 'username' name="username" placeholder="Username" required>
+            <div class="bar"></div>
+          </div>
+
+          <div class="input-container">
+            <input type="password" id = "password" name="password" placeholder="Password" required>
+            <div class="bar"></div>
+          </div>
+
+          <div class="input-container">
+            <input type="invite" id = "invite" name="invite" placeholder="Invite" required>
+            <div class="bar"></div>
+          </div>
+          
+          <div class="button-container">
+            <button type ="submit"><span>Submit</span></button>
+          </div>
+        </fieldset>
+      </form>
+      <p>already have an account?</p><a id="mylink" href="/login">login</a>
+      </div>
+    </body>
+</html>
